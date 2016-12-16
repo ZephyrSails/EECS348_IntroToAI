@@ -1,0 +1,22 @@
+Please run:
+
+~ runParse.py
+
+to test the code
+
+Other than Fixed the bug in today (Thu 17 Nov)'s class.
+
+Few one little thing changed:
+
+parse() now return a list of lists of statements,
+This is to match different situations in this assignment.
+I will use few example to explain this:
+  example1: Where is Block1:
+    -> [[['on', 'Block1', '?x']], [['under', 'Block1', '?x']], [['over', 'Block1', '?x']], [['in', 'Block1', '?x']]]
+  example2: What blocks are blue:
+    -> [[['inst', '?x', 'blocks'], ['color', '?x', 'blue']]]
+  example3: Block1 is blue:
+    -> [[['color', 'Block1', 'blue']]]
+
+You should write the Value this way:
+  Value: [(statements_1) (statements_2)] [(statements_3) (statements_4)]

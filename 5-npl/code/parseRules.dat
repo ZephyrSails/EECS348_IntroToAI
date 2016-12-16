@@ -1,0 +1,152 @@
+Parse rules have five elements - Name, Pattern, Type, Action, and Value for those actions
+
+A name is a string with no spaces.
+A patterns is a list of words or references to other patterns OR a disjunct of words or
+    references to other patterns
+A Type is a sentence or a phrase
+The action is the action that the rule invokes
+The Value is the thing that the action is done on
+
+Name: askSentence1
+Pattern: What is <prepare> <name>
+Type: Sentence
+Action: Ask
+Value: [(<prepare> ?x <name>)]
+
+Name: askSentence2
+Pattern: What is the <attribute> <name>
+Type: Sentence
+Action: Ask
+Value: [(<attribute> <name> ?x)]
+
+Name: assertSentence1
+Pattern: <name> is <attributeValue>
+Type: Sentence
+Action: Assert
+Value: [(<attributeType> <name> <attributeValue>)]
+
+Name: askSentence4
+Pattern: What <instType> <beVerb> <attributeValue>
+Type: Sentence
+Action: Ask
+Value: [(inst ?x <instType>) (<attributeType> ?x <attributeValue>)]
+
+Name: askSentence5
+Pattern: What is <name>
+Type: Sentence
+Action: Ask
+Value: [(inst <name> ?x)]
+
+Name: askSentence6
+Pattern: What <attributeType> is <name>
+Type: Sentence
+Action: Ask
+Value: [(<attributeType> <name> ?x)]
+
+Name: askSentence7
+Pattern: Where is <name>
+Type: Sentence
+Action: Ask
+Value: [(on <name> ?x)] [(under <name> ?x)] [(over <name> ?x)] [(in <name> ?x)]
+
+Name: attributeValue
+Pattern: <colorValue>|<sizeValue>
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: colorValue
+Pattern: red|green|blue
+Type: Phrase
+Action: AddBinding
+Value: (<attributeType> color)
+
+Name: instType
+Pattern: blocks|spheres|pyramid
+Type: Phrase
+Action: Phrase
+Value: NoOp
+
+Name: sizeValue
+Pattern: big|small
+Type: Phrase
+Action: AddBinding
+Value: (<attributeType> size)
+
+Name: positionPrep
+Pattern: on|under|over|in
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: sizePrep
+Pattern: <bigger>|<smaller>|<equal>
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: prepare
+Pattern: <sizePrep>|<positionPrep>
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: name
+Pattern: Block1|Block2
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: color
+Pattern: color of
+Type: Phrase
+Action: Return
+Value: color
+
+Name: shape
+Pattern: shape of
+Type: Phrase
+Action: Return
+Value: shape
+
+Name: size
+Pattern: size of
+Type: Phrase
+Action: Return
+Value: size
+
+Name: attribute
+Pattern: <color>|<size>|<shape>
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: bigger
+Pattern: bigger than
+Type: Phrase
+Action: Return
+Value: bigger
+
+Name: smaller
+Pattern: smaller than
+Type: Phrase
+Action: Return
+Value: smaller
+
+Name: equal
+Pattern: equal to
+Type: Phrase
+Action: Return
+Value: equal
+
+Name: attributeType
+Pattern: color|size|shape
+Type: Phrase
+Action: NoOp
+Value: NoOp
+
+Name: beVerb
+Pattern: is|are
+Type: Phrase
+Action: NoOp
+Value: NoOp

@@ -1,0 +1,13 @@
+fact: (inst cube1 cube)
+fact: (inst cube2 cube)
+fact: (inst cube3 cube)
+fact: (on cube1 cube2)
+fact: (on cube2 cube3)
+fact: (bigger cube2 cube3)
+fact: (bigger cube1 cube2)
+
+rule: ((inst ?x cube)) -> (flat ?x)
+rule: ((flat ?x)) -> (clear ?x)
+rule: ((covered ?y)) -> ~(clear ?y)
+rule: ((on ?x ?y)) -> (under ?y ?x)
+rule: ((on ?x ?y) (bigger ?x ?y)) -> (covered ?y)

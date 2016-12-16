@@ -1,0 +1,81 @@
+The trace for:
+3 pegs, 3 disks hanoi:
+[[0, 0, 0], [2, 0, 0], [2, 1, 0], [1, 1, 0], [1, 1, 2], [0, 1, 2], [0, 2, 2], [2, 2, 2]]
+4 pegs, 4 disks hanoi:
+[[0, 0, 0, 0], [1, 0, 0, 0], [1, 2, 0, 0], [2, 2, 0, 0], [2, 2, 1, 0], [2, 2, 1, 3], [0, 2, 1, 3], [0, 2, 3, 3], [0, 3, 3, 3], [3, 3, 3, 3]]
+5 pegs, 5 disks hanoi:
+[[0, 0, 0, 0, 0], [1, 0, 0, 0, 0], [1, 2, 0, 0, 0], [2, 2, 0, 0, 0], [2, 2, 1, 0, 0], [2, 2, 1, 3, 0], [2, 2, 1, 3, 4], [0, 2, 1, 3, 4], [0, 2, 1, 4, 4], [0, 2, 4, 4, 4], [0, 4, 4, 4, 4], [4, 4, 4, 4, 4]]
+6 pegs, 6 disks hanoi (3 seconds):
+[[0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0], [1, 2, 0, 0, 0, 0], [2, 2, 0, 0, 0, 0], [2, 2, 1, 0, 0, 0], [2, 2, 1, 3, 0, 0], [2, 2, 1, 3, 4, 0], [2, 2, 1, 3, 4, 5], [0, 2, 1, 3, 4, 5], [0, 2, 1, 3, 5, 5], [0, 2, 1, 5, 5, 5], [0, 2, 5, 5, 5, 5], [0, 5, 5, 5, 5, 5], [5, 5, 5, 5, 5, 5]]
+7 pegs, 7 disks hanoi (3 mins):
+[[0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0], [1, 2, 0, 0, 0, 0, 0], [2, 2, 0, 0, 0, 0, 0], [2, 2, 1, 0, 0, 0, 0], [2, 2, 1, 3, 0, 0, 0], [2, 2, 1, 3, 4, 0, 0], [2, 2, 1, 3, 4, 5, 0], [2, 2, 1, 3, 4, 5, 6], [0, 2, 1, 3, 4, 5, 6], [0, 2, 1, 3, 4, 6, 6], [0, 2, 1, 3, 6, 6, 6], [0, 2, 1, 6, 6, 6, 6], [0, 2, 6, 6, 6, 6, 6], [0, 6, 6, 6, 6, 6, 6], [6, 6, 6, 6, 6, 6, 6]]
+
+If you are TA, please help me forward following text to Professor Hammond.
+Thank you.
+
+It may looks different than usual output because I'm using a different state
+representation method.
+
+I tried a special method to represent state, after Sep 29's lecture, which is
+similar to you vacuum cleaner example. it involved n-dimension list.
+
+And this method is fast, it can solve 7 regs, 7 disks problem in 3 mins, and
+output the optimal result.
+
+Yesterday I heard another group's algorithm solve 5 regs, 5 disks problem in 30
+mins without printing optimal result, so I suppose my work is better.
+(Mine can solve 5 regs, 5 disks hanoi in 1 second printing optimal result)
+
+I remembered in the first lecture, you said you are gonna need everyone do a
+presentation before class in this quarter.
+
+Please check my code, if you think it's interesting enough, I wonder if I can
+do my presentation by explaining this. Because who know when will I be
+overwhelmed by ML assignment, better do this now than later. If you agree, please
+email zhipingxiu2018@u.northwestern.edu
+
+And if you think this is not interesting enough, just tell me this may not okey,
+I personally prefer straightforward.
+I also don't want to brag about my code, while half of the class sitting there
+also have better solution.
+
+---- Following stuff was written before I finished ML assignment and was did by our group member together ----
+
+We implemented two methods, breadth first and depth first.
+
+hanoi_dfs(4, 4):
+[[0, 1], [0, 2], [0, 3], [1, 0], [0, 2], [0, 1], [2, 0], [0, 1], [3, 0], [1, 0],
+[1, 3], [0, 1], [0, 3], [2, 3], [1, 3]]
+
+hanoi_bfs(4, 4):
+[[0, 1], [0, 2], [1, 2], [0, 1], [0, 3], [1, 3], [2, 0], [2, 3], [0, 3]]
+
+Process finished with exit code 0.
+
+Depth first run’s faster than breadth first, while breadth first methods can
+promise an optimal path solution.
+
+We tried to improve the result of depth first search by choosing next branch
+randomly, because starting from first branch we found intuitively lead to a
+very bad idea, but things didn’t changed too much. Then we tried to use up
+boundary to eliminate cut some too bad solution, and end up with using
+2 ** n - 1 step every time (which is the same step required using only 3 regs).
+
+In depth first solution, we must apply state buffer to prevent infinite looping,
+in breadth first searching, however, we are not required to do so, but applying
+a more complex one can definitely improve searching speed. But we didn’t do so,
+because I spent all my time on ML assignment… Sorry.
+
+There are another idea I didn’t implement, but I think it’s worth mentioning:
+There are a short recursive method for regs = 3, and this method is proved to
+always return optimal solution.
+The different between 3 pegs and n pegs is: we have more than one helper to
+help us make the target.
+
+So, in order to move n disks from one peg to another, with n-2 helper. We can
+firstly move m1 disks to one helper, with n-2 helper, leave them there; then
+move m2 disks to another helper, with the n-3 helper. Repeat doing this until
+we have one biggest disk left on the starting point, so we move this disk to
+target peg directly, and then put mk … m1 pile of disks back to target peg,
+recursively. Could be a good idea to do so, the problem is, how to choose the
+size of mk…m1. This is not what I implemented eventually.

@@ -1,0 +1,319 @@
+Following is one trace when you run
+
+~ python wumpusHunter.py
+
+wumpusHunter.py is silent, this code won't print any line
+(except a 'Yes!' when it finish it's job),
+
+The code will use the action interface take_action() command
+defined in updatewumpus.py, to explore the world, kill the wumpus and
+take the gold and come back.
+
+There is no other test case for us to test (all test case generate 4*4 world),
+but the hunter is designed to fit into different size of world.
+
+When there are no way to evaluate if some place is safe (say there are
+50-50 change a room can have pit), the hunter won't take risk, he will wait
+until he can make sure.
+
+If there are no way to find more safe room which he is not visited yet, he
+will come back home, he won't risk life for gold. But this situation never
+happened when we were testing it. Which means every world generated is
+"crackable" by reasoning.
+
+wumpusHunter.py is commented, please read it if you want.
+
+Following is the output of one call:
+
+~ python wumpusHunter.py
+*********************************
+
+Initializing your new Wumpus world!
+Your new world is called: Wumpus2847
+You are starting in Cell 11, looking to the Right.
+You are starting with 0 points, 1 arrow(s).
+You are alive.
+
+*********************************
+
+Turing to face Up
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Up, living, 0)
+
+*********************************
+
+Turing to face Left
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Left, living, 0)
+
+*********************************
+
+Taking a step
+You bumped your head on the edge of the world.
+Perception = (clean, calm, bare, bump, quiet, Cell 11, Left, living, 0)
+
+*********************************
+
+Turing to face Right
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Right, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 21
+There is a breeze running through this room
+Perception = (clean, breeze, bare, no_bump, quiet, Cell 21, Right, living, 0)
+
+*********************************
+
+Turing to face Left
+There is a breeze running through this room
+Perception = (clean, breeze, bare, no_bump, quiet, Cell 21, Left, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 11
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Left, living, 0)
+
+*********************************
+
+Turing to face Up
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Up, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 12
+There is a nasty smell in here
+Perception = (nasty, calm, bare, no_bump, quiet, Cell 12, Up, living, 0)
+
+*********************************
+
+Turing to face Right
+There is a nasty smell in here
+Perception = (nasty, calm, bare, no_bump, quiet, Cell 12, Right, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 22
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Right, living, 0)
+
+*********************************
+
+Turing to face Left
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Left, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 12
+There is a nasty smell in here
+Perception = (nasty, calm, bare, no_bump, quiet, Cell 12, Left, living, 0)
+
+*********************************
+
+Turing to face Down
+There is a nasty smell in here
+Perception = (nasty, calm, bare, no_bump, quiet, Cell 12, Down, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 11
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Down, living, 0)
+
+*********************************
+
+Turing to face Down
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Down, living, 0)
+
+*********************************
+
+Taking a step
+You bumped your head on the edge of the world.
+Perception = (clean, calm, bare, bump, quiet, Cell 11, Down, living, 0)
+
+*********************************
+
+Turing to face Right
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Right, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 21
+There is a breeze running through this room
+Perception = (clean, breeze, bare, no_bump, quiet, Cell 21, Right, living, 0)
+
+*********************************
+
+Turing to face Left
+There is a breeze running through this room
+Perception = (clean, breeze, bare, no_bump, quiet, Cell 21, Left, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 11
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Left, living, 0)
+
+*********************************
+
+Turing to face Right
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Right, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 21
+There is a breeze running through this room
+Perception = (clean, breeze, bare, no_bump, quiet, Cell 21, Right, living, 0)
+
+*********************************
+
+Turing to face Up
+There is a breeze running through this room
+Perception = (clean, breeze, bare, no_bump, quiet, Cell 21, Up, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 22
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Up, living, 0)
+
+*********************************
+
+Turing to face Right
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Right, living, 0)
+
+*********************************
+
+Taking a step
+Moving to Cell 32
+There is a lovely glitter in the room
+There is a breeze running through this room
+Perception = (clean, breeze, glitter, no_bump, quiet, Cell 32, Right, living, 0)
+
+*********************************
+
+Trying to pick up gold
+You've picked up some gold!
+You get 1000 more points!
+There is a lovely glitter in the room
+There is a breeze running through this room
+Perception = (clean, breeze, bare, no_bump, quiet, Cell 32, Right, living, 0)
+
+*********************************
+
+Turing to face Left
+There is a breeze running through this room
+Perception = (clean, breeze, bare, no_bump, quiet, Cell 32, Left, living, 1000)
+
+*********************************
+
+Taking a step
+Moving to Cell 22
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Left, living, 1000)
+
+*********************************
+
+Turing to face Up
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Up, living, 1000)
+
+*********************************
+
+Taking a step
+Moving to Cell 23
+There is a breeze running through this room
+There is a nasty smell in here
+Perception = (nasty, breeze, bare, no_bump, quiet, Cell 23, Up, living, 1000)
+
+*********************************
+
+Turing to face Down
+There is a breeze running through this room
+There is a nasty smell in here
+Perception = (nasty, breeze, bare, no_bump, quiet, Cell 23, Down, living, 1000)
+
+*********************************
+
+Taking a step
+Moving to Cell 22
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Down, living, 1000)
+
+*********************************
+
+Turing to face Left
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Left, living, 1000)
+
+*********************************
+
+Taking a step
+Moving to Cell 12
+There is a nasty smell in here
+Perception = (nasty, calm, bare, no_bump, quiet, Cell 12, Left, living, 1000)
+
+*********************************
+
+Turing to face Up
+There is a nasty smell in here
+Perception = (nasty, calm, bare, no_bump, quiet, Cell 12, Up, living, 1000)
+
+*********************************
+
+Trying to shoot the Wumpus
+You killed the Wumpus!
+You get 100 more points!
+Perception = (clean, calm, bare, no_bump, quiet, Cell 12, Up, living, 1100)
+
+*********************************
+
+Turing to face Left
+Perception = (clean, calm, bare, no_bump, quiet, Cell 12, Left, living, 1100)
+
+*********************************
+
+Taking a step
+You bumped your head on the edge of the world.
+Perception = (clean, calm, bare, bump, quiet, Cell 12, Left, living, 1100)
+
+*********************************
+
+
+*********************************
+
+Turing to face Right
+Perception = (clean, calm, bare, no_bump, quiet, Cell 12, Right, living, 1100)
+
+*********************************
+
+Taking a step
+Moving to Cell 22
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Right, living, 1100)
+
+*********************************
+
+Turing to face Left
+Perception = (clean, calm, bare, no_bump, quiet, Cell 22, Left, living, 1100)
+
+*********************************
+
+Taking a step
+Moving to Cell 12
+Perception = (clean, calm, bare, no_bump, quiet, Cell 12, Left, living, 1100)
+
+*********************************
+
+Turing to face Down
+Perception = (clean, calm, bare, no_bump, quiet, Cell 12, Down, living, 1100)
+
+*********************************
+
+Taking a step
+Moving to Cell 11
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Down, living, 1100)
+
+*********************************
+
+Perception = (clean, calm, bare, no_bump, quiet, Cell 11, Down, won, 1100)
+Yes!
